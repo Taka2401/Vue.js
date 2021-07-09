@@ -1,21 +1,28 @@
 
 <div id="app">
-  <p v-bind="getPosition">マウス載せて</p>
-  <p>x: {{x}}, y:{{y}}</p>
+  <P>現在、{{ number }}回クリックされています</P>
+  <button v-on:click="countup">カウントアップ</button>
+  <P v-on:mousemove="mousePosition">マウスのせ</P>
+  <P>x:{{x}}、y:{{y}}</P>
 </div>
+
 
 <script>
   new Vue({
-    el: '#app',
-    data: {
-      x: 0,
-      y: 0
+  el: '#app',
+  data: {
+   number: 0,
+   x: 0,
+   y: 0
+  },
+  methods: {
+    countup: function() {
+      this.number += 1
     },
-    methods: {
-      getPosition: function (event) {
-        this.x = event.clientX;
-        this.y = event.clientY;
-      }
+    mousePosition: function(event) {
+      this.x = event.clientX;
+      this.y = event.clientY;
     }
-  })
+  }
+})
 </script>
