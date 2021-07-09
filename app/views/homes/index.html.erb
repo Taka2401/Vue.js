@@ -1,0 +1,21 @@
+
+<div id="app">
+  <p v-bind="getPosition">マウス載せて</p>
+  <p>x: {{x}}, y:{{y}}</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      x: 0,
+      y: 0
+    },
+    methods: {
+      getPosition: function (event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      }
+    }
+  })
+</script>
