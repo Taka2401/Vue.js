@@ -1,8 +1,9 @@
 
 <div id="app">
-  <p>{{ counter }}</p>
-  <button @click="counter += 1"> +1</button>
-  <P>{{ lessthanThree }}</P>
+  <h1 :class="classObject">hello</h1>
+  <button @click="isActive = !isActive">切り替え</button>
+
+  <h1 :class="[{red: isActive}, bg]">hello</h1>
 </div>
 
 
@@ -10,24 +11,30 @@
   new Vue({
     el: '#app',
     data: {
-     counter: 0
+      isActive: true,
+      color: 'red',
+      bg: 'bg-blue'
     },
     computed: {
-      lessthanThree: function() {
-        return this.counter > 3 ? "３より上" : "3以下"
-      }
-    },
-    watch: {
-      counter: function() {
-        var vm = this;
-        setTimeout(function(){
-          vm.counter = 0
-        }, 3000)
+      classObject: function() {
+        return {
+          red: this.isActive,
+          'bg-blue': !this.isActive
+        }
       }
     }
   })
 </script>
 
+<style>
+  .red {
+    color: red;
+  }
+
+  .bg-blue {
+    background: blue;
+  }
+</style>
 
 
 
