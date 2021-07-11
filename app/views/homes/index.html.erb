@@ -1,22 +1,31 @@
 
 <div id="app">
-  <P>現在、{{ number }}回クリックされています。</P>
-  <button @click="countup">カウントアップ</button>
+  <p>{{ counter }}</p>
+  <button @click="counter += 1"> +1</button>
+  <P>{{ lessthanThree }}</P>
 </div>
 
 
 <script>
   new Vue({
-  el: '#app',
-  data: {
-   number: 0
-  },
-  methods: {
-    countup: function() {
-      this.number += 1
+    el: '#app',
+    data: {
+     counter: 0
+    },
+    computed: {
+      lessthanThree: function() {
+        return this.counter > 3 ? "３より上" : "3以下"
+      }
+    },
+    watch: {
+      counter: function() {
+        var vm = this;
+        setTimeout(function(){
+          vm.counter = 0
+        }, 3000)
+      }
     }
-  }
-})
+  })
 </script>
 
 
