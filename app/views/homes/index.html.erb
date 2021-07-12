@@ -1,17 +1,24 @@
 
 <div id="app">
-  <P v-if="ok">ok</P>
-  <P v-else-if="maybeok">maybeok..</P>
-  <P v-else>not ok...</P>
+  <ul>
+    <div v-for="fruit in fruits" :key="fruit">
+      <p>{{fruit}}</p>
+      <input type="text">
+    </div>
+  </ul>
+  <button @click="remove">先頭を削除</button>
 </div>
-
 
 <script>
   new Vue({
     el: '#app',
     data: {
-      ok: false,
-      maybeok: false
+    fruits: ['りんご', 'ブドウ', 'バナナ']
+    },
+    methods: {
+      remove: function() {
+        this.fruits.shift()
+      }
     }
   })
 </script>
