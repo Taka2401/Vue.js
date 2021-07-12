@@ -1,10 +1,13 @@
 <div id="app">
   <p>{{message}}</p>
   <p>{{mydata}}</p>
+  <hello></hello>
+  <hello></hello>
 </div>
 
-<div id="app2">
-</div>
+<div id="app2"></div>
+<div id="app3"></div>
+<div class="hello"></div>
 
 
 <script>
@@ -12,6 +15,10 @@
 var data = {
     message: 'こんにちは'
   }
+
+Vue.component('hello', {
+  template: '<p>こんにちは</p>'
+});
 
 var vm = new Vue({
   data: data,
@@ -31,7 +38,30 @@ new Vue({
   template: '<h1>{{name}}</h1>'
 }).$mount('#app2')
 
+new Vue({
+  data: {
+    name: 'taka'
+  },
+  render: function(createElement) {
+    return createElement('h1', this.name);
+  }
+}).$mount('#app3')
+
+new Vue({
+  el: '.hello',
+  template: '<P>こんにちは!!</P>'
+})
+
 </script>
+
+
+
+
+
+
+
+
+
 
 
 
