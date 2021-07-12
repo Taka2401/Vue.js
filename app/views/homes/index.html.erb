@@ -1,36 +1,37 @@
-
-
-
-<div id="app1">
+<div id="app">
   <p>{{message}}</p>
+  <p>{{mydata}}</p>
 </div>
 
 <div id="app2">
-  <p>{{message}}</p>
-  <button @click="changeMassage1">インスタンス1を変更</button>
 </div>
 
-<script>
-  var vm1 = new Vue({
-    el: '#app1',
-    data: {
-      message: 'インスタンス1'
-    }
-  })
-</script>
 
 <script>
-  var vm2 = new Vue({
-    el: '#app2',
-    data: {
-      message: 'インスタンス2'
-    },
-    methods: {
-      changeMassage1: function() {
-      vm1.message = "インスタンス２から変更"
-      }
+
+var data = {
+    message: 'こんにちは'
+  }
+
+var vm = new Vue({
+  data: data,
+  computed: {
+    mydata: function() {
+      return this.$data;
     }
-  })
+  }
+})
+
+vm.$mount('#app')
+
+new Vue({
+  data: {
+    name: 'taka'
+  },
+  template: '<h1>{{name}}</h1>'
+}).$mount('#app2')
+
 </script>
+
 
 
