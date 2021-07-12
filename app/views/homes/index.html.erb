@@ -1,23 +1,33 @@
 
-<div id="app">
-  <ul>
-    <div v-for="fruit in fruits" :key="fruit">
-      <p>{{fruit}}</p>
-      <input type="text">
-    </div>
-  </ul>
-  <button @click="remove">先頭を削除</button>
+
+
+<div id="app1">
+  <p>{{message}}</p>
+</div>
+
+<div id="app2">
+  <p>{{message}}</p>
+  <button @click="changeMassage1">インスタンス1を変更</button>
 </div>
 
 <script>
-  new Vue({
-    el: '#app',
+  var vm1 = new Vue({
+    el: '#app1',
     data: {
-    fruits: ['りんご', 'ブドウ', 'バナナ']
+      message: 'インスタンス1'
+    }
+  })
+</script>
+
+<script>
+  var vm2 = new Vue({
+    el: '#app2',
+    data: {
+      message: 'インスタンス2'
     },
     methods: {
-      remove: function() {
-        this.fruits.shift()
+      changeMassage1: function() {
+      vm1.message = "インスタンス２から変更"
       }
     }
   })
