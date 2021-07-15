@@ -1,3 +1,4 @@
 <template>
-  <p v-border>home</p>
+  <p v-border:solid.round.shadow="{width: '5px', color: 'red'}">home</p>
 </template>
+
