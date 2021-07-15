@@ -14,11 +14,6 @@
 
       <EventTitle v-model="eventData.title"></EventTitle>
 
-      <EventTitle
-      :value="eventData.title"
-      @input="eventData.title = $event">
-      </EventTitle>
-
       <label for="maxNumber">最大人数</label>
       <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
       <p>{{ eventData.maxNumber}}</p>
