@@ -9,7 +9,7 @@
     <keep-alive>
       <component :is="currentComponent"></component>
     </keep-alive>
-    <div>
+    <div style="padding: 10rem;">
       <h2>イベントのフォーム</h2>
       <label for="title">タイトル</label>
       <input id="title" type="text" v-model.lazy="eventData.title">
@@ -48,9 +48,12 @@
       <label for="paid">有料</label>
 
       <p>開催場所</p>
-      <select>
-        <option>東京</option>
+      <select v-model="eventData.location" multiple>
+        <option v-for="location in locations" :key="location">
+          {{ location }}
+        </option>
       </select>
+      <p>{{ eventData.location }}</p>
     </div>
   </div>
 </template>
@@ -65,6 +68,7 @@ export default {
     return {
       number: 18,
       currentComponent: "Home",
+      locations: ["東京", "名古屋", "大阪"],
       eventData: {
         title: "",
         maxNumber: 0,
@@ -72,7 +76,8 @@ export default {
         detail: "",
         isPrivate: false,
         target: [],
-        price: "無料"
+        price: "無料",
+        location: []
       }
     };
   },
