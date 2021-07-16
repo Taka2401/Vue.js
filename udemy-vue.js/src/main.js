@@ -8,3 +8,4 @@ Vue.component('LikeNumber', LikeNumber);
 new Vue({
   render: h => h(App),
 }).$mount('#app')
+
