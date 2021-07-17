@@ -5,6 +5,31 @@
     <button @click="myAnimation = 'fade'">fade</button>
     <p>{{ myAnimation }}</p>
     <button @click="show = !show">切り替え</button>
+    <br><br>
+
+    <transition
+      :css="false
+      @befoer-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      enter-cancelled="enterCancelled"
+      @before-Leave="beforeLeave"
+      @Leave="Leave"
+      @after-Leave="afterLeave"
+      @Leave-cancelled="LeaveCancelled"
+    >
+      <div class="circle" v-if="show"></div>
+    </transition>
+
+    <button @click="myComponent = 'ComponentA'">componentA</button>
+    <button @click="myComponent = 'ComponentB'">componentB</button>
+    <component :is="myComponent"></component>
+
+    <transition name="fade" mode="out-in">
+      <p v-if="show" key="bye">さよなら</p>
+      <p v-else key="hello">こんにちは</p>
+    </transition>
+
     <transition
       enter-active-class="animate__animated animate__bounce"
       leave-active-class="animate__animated animate__rubberBand"
@@ -21,17 +46,76 @@
 </template>
 
 <script>
+import ComponentA from "./components/ComponentA.vue";
+import ComponentB from "./components/ComponentB.vue";
+
 export default {
+  components: {
+    ComponentA,
+    ComponentB
+  },
   data() {
     return {
       show: true,
-      myAnimation: 'slide'
+      myAnimation: 'slide',
+      myComponent: 'ComponentA'
     };
+  },
+  methods: {
+    beforeEnter(el){
+
+    },
+    enter(el, done){
+      let scale = 0;
+      const interval = setInterval(() => {
+        el.style.transform = 'scale(${scale})';
+        scale += 0.1
+        if (scale > 1) {
+          clearInterval(interval);
+          done();
+        }
+      }, 200);
+    },
+    afterEnter(el){
+
+    },
+    enterCancelled(el){
+
+    },
+    beforeLeave(el){
+
+    },
+    Leave(el){
+      let scale = 1;
+      const interval = setInterval(() => {
+        el.style.transform = 'scale(${scale})';
+        scale -= 0.1
+        if (scale < 0) {
+          clearInterval(interval);
+          done();
+        }
+      }, 200);
+    },
+    afterLeave(el){
+
+    },
+    LeaveCancelled(el){
+
+    },
   }
 };
 </script>
 
 <style scoped>
+.circle {
+  width: 200px;
+  height: 200px;
+  margin: 30px auto;
+  border-radius: 100px;
+  background-color: pink;
+}
+
+
 .fade-enter {
   opacity: 0;
 }
