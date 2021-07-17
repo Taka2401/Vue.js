@@ -1,10 +1,27 @@
+
 <template>
-  <p v-border:solid.round.shadow="{width: '5px', color: 'red'}">home</p>
+  <div>
+    <p v-border:solid.round.shadow="{width: '5px', color: 'red'}">home</p>
+    <h2>{{ title | lowerCase }}</h2>
+    <p>{{ subTitle | lowerCase }}</p>
+  </div>
 </template>
 
 
 <script>
 export default {
+  data() {
+    return {
+      tmpData: 'hello',
+      title: 'Welcome To Tokyo',
+      subTitle: "tokyo is a great city"
+    };
+  },
+  filters: {
+    lowerCase(value) {
+      return value.toLowerCase();
+    }
+  },
   directives: {
     border(el, binding) {
       el.style.borderWidth = binding.value.width;
