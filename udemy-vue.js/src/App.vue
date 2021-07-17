@@ -8,15 +8,10 @@
     <br><br>
 
     <transition
-      :css="false
-      @befoer-enter="beforeEnter"
+      :css="false"
+      @before-enter="beforeEnter"
       @enter="enter"
-      @after-enter="afterEnter"
-      enter-cancelled="enterCancelled"
-      @before-Leave="beforeLeave"
-      @Leave="Leave"
-      @after-Leave="afterLeave"
-      @Leave-cancelled="LeaveCancelled"
+      @leave="leave"
     >
       <div class="circle" v-if="show"></div>
     </transition>
@@ -62,46 +57,33 @@ export default {
     };
   },
   methods: {
-    beforeEnter(el){
-
+    beforeEnter(el) {
+      el.style.transform = 'scale(0)'
     },
-    enter(el, done){
+    enter(el, done) {
+      // 現れるとき
       let scale = 0;
       const interval = setInterval(() => {
-        el.style.transform = 'scale(${scale})';
-        scale += 0.1
+        el.style.transform = `scale(${scale})`;
+        scale += 0.1;
         if (scale > 1) {
           clearInterval(interval);
           done();
         }
-      }, 200);
+      }, 20);
     },
-    afterEnter(el){
-
-    },
-    enterCancelled(el){
-
-    },
-    beforeLeave(el){
-
-    },
-    Leave(el){
+    leave(el, done) {
+      // 消えるとき
       let scale = 1;
       const interval = setInterval(() => {
-        el.style.transform = 'scale(${scale})';
-        scale -= 0.1
+        el.style.transform = `scale(${scale})`;
+        scale -= 0.1;
         if (scale < 0) {
           clearInterval(interval);
           done();
         }
-      }, 200);
-    },
-    afterLeave(el){
-
-    },
-    LeaveCancelled(el){
-
-    },
+      }, 20);
+    }
   }
 };
 </script>
