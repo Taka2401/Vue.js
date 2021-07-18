@@ -29,7 +29,7 @@ export default new Router ({
     },
     children: [
       { path: "posts", component: UsersPost },
-      { path: "Profile", component: UsersProfile }
+      { path: "Profile", component: UsersProfile, name: 'user-profile' }
     ]
   }
   ]

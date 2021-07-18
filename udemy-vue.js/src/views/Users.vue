@@ -6,6 +6,7 @@
     <hr>
     <h2>user no . {{ id }}</h2>
     <router-link :to="'/users/' + (Number(id) + 1) + '/profile' ">次のuser</router-link>
+    <router-link :to="{ name: 'user-profile', params: { id: Number(id) + 1 } }">次のuser</router-link>
     <router-view></router-view>
   </div>
 </template>
