@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 100px auto; text-align: center;">
+  <div style="width: 700px; margin: 100px auto; text-align: center;">
     <nav>
       <router-link
         to="/"
@@ -8,7 +8,7 @@
         class="link"
       >home</router-link>
       <router-link
-        to="users"
+        to="/users"
         active-class="active--link"
         exact
         class="link"
