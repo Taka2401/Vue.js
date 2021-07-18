@@ -6,5 +6,9 @@ import Users from './views/Users.vue';
 Vue.use(Router);
 
 export default new Router ({
-  routes: [{path: '/', component: Home}, {path: '/users', component: Users}]
+  mode: "history",
+  routes: [7
+    { path: '/', component: Home },
+    { path: '/users/:id', component: Users }
+  ]
 });
