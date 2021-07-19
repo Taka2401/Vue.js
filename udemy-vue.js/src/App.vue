@@ -32,7 +32,7 @@ export default {
     };
   },
   created() {
-    axios.get('https://firestore.googleapis.com/v1/projects/my-project-34927/databases/(default)/documents/comments',
+    axios.get('/comments',
     )
     .then(response => {
       this.posts = response.data.documents;
@@ -41,7 +41,7 @@ export default {
   methods: {
     createComment() {
       axios.post(
-        'https://firestore.googleapis.com/v1/projects/my-project-34927/databases/(default)/documents/comments',
+        '/comments',
         {
           fields: {
             name: {
