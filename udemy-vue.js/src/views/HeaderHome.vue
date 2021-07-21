@@ -22,13 +22,13 @@
 export default {
   methods: {
     increment() {
-      this.$store.state.count ++;
+      this.$store.dispatch('increment', 2)
     },
-     decrement() {
-      this.$store.state.count --;
+    decrement() {
+      this.$store.dispatch('decrement', 2)
     }
   }
-}
+};
 </script>
 
 <style scoped>
