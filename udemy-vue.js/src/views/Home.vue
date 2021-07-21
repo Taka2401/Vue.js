@@ -4,9 +4,9 @@
     <button @click="toUsers">usersページに遷移</button>
     <p>{{ doubleCount }}</p>
     <input
-    type="text"
-    :value="message"
-    @input="updateMessage"
+      type="text"
+      :value="message"
+      @input="updateMessage"
     >
     <p>{{ message }}</p>
   </div>
