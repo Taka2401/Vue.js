@@ -2,20 +2,18 @@
   <div>
     <h1>Home</h1>
     <button @click="toUsers">usersページに遷移</button>
-    <p>{{ count }}</p>
+    <p>{{ doubleCount }}</p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  computed: {
-    count() {
-      return this.$store.state.count;
-    }
-  },
+  computed: mapGetters(['doubleCount']),
   methods: {
     toUsers() {
-      this.$router.push({ 
+      this.$router.push({
         name: 'user-profile',
         params: { id: 1 }
       });
